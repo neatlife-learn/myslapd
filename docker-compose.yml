@@ -1,0 +1,14 @@
+version: '2.1'
+services:
+    slapd:
+        image: slapd
+        restart: always
+        environment:
+            - LDAP_DOMAIN=uulvs.com
+            - LDAP_ORGANISATION="我的公司"
+            - LDAP_ROOTPASS=root
+        volumes:
+            - ./data/ldap:/var/lib/ldap
+            - ./data/ldapconfig:/etc/ldap/slapd.d
+        ports:
+            - 389:389
